@@ -13,7 +13,7 @@
         android:textSize="24sp"></TextView>
 
     <TextView
-        android:id="@+id/treino_activity_item_peso"
+        android:id="@+id/treino_activity_item_carga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -21,6 +21,7 @@
         android:textSize="24sp"></TextView>
 
     <Button
+        android:id="@+id/treino_activity_item_botao_exercicio"
         android:layout_width="match_parent"
         android:text="Completar exercicio"
         android:layout_height="wrap_content"></Button>
