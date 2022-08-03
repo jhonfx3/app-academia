@@ -10,21 +10,44 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:text="teste"
-        android:textSize="24sp"></TextView>
+        android:textSize="24sp"
+        android:textStyle="bold"></TextView>
 
-    <TextView
-        android:id="@+id/treino_activity_item_carga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="teste"
-        android:textSize="24sp"></TextView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/treino_activity_item_series"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="series"
+            android:textSize="24sp"></EditText>
+
+        <EditText
+            android:id="@+id/treino_activity_item_repeticoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="repeticoes"
+            android:textSize="24sp"></EditText>
+
+        <EditText
+            android:id="@+id/treino_activity_item_carga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="carga"
+            android:textSize="24sp"></EditText>
+    </LinearLayout>
 
     <Button
         android:id="@+id/treino_activity_item_botao_exercicio"
         android:layout_width="match_parent"
-        android:text="Completar exercicio"
-        android:layout_height="wrap_content"></Button>
+        android:layout_height="wrap_content"
+        android:text="Completar exercicio"></Button>
 
 
 </LinearLayout>

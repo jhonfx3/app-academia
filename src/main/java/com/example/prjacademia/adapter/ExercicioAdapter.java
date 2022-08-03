@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.prjacademia.R;
@@ -47,23 +48,39 @@ public class ExercicioAdapter extends BaseAdapter {
     }
 
     private void setaOsDadosNasTextViews(int posicao, View viewCriada) {
-        TextView txtNomeExercicio = viewCriada.findViewById(R.id.treino_activity_item_nome_exercicio);
-        TextView txtCargaExercicio = viewCriada.findViewById(R.id.treino_activity_item_carga);
+        TextView txtNomeEx = viewCriada.findViewById(R.id.treino_activity_item_nome_exercicio);
+        EditText txtCargaEx = viewCriada.findViewById(R.id.treino_activity_item_carga);
+        EditText txtRepeticoesEx = viewCriada.findViewById(R.id.treino_activity_item_repeticoes);
+        EditText txtSeriesEx = viewCriada.findViewById(R.id.treino_activity_item_series);
+
+        setaAsInformacoesNasViews(posicao, txtNomeEx, txtCargaEx, txtRepeticoesEx, txtSeriesEx);
+
+        configuraEventoDoBotao(viewCriada);
+    }
+
+    private void configuraEventoDoBotao(View viewCriada) {
         Button botao = viewCriada.findViewById(R.id.treino_activity_item_botao_exercicio);
-        Exercicio exercicio = exercicios.get(posicao);
-        txtNomeExercicio.setText(exercicio.getNome());
-        txtCargaExercicio.setText(String.valueOf(exercicio.getCarga()));
         botao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String textoBotao = (String) botao.getText();
-                if(textoBotao.contains("Completar")){
+                if (textoBotao.contains("Completar")) {
                     botao.setText("Reiniciar exercicio");
-                }else{
+                } else {
                     botao.setText("Completar exercicio");
                 }
             }
         });
+    }
+
+    private void setaAsInformacoesNasViews(int posicao, TextView txtNomeEx, EditText txtCargaEx, EditText txtRepeticoesEx, EditText txtSeriesEx) {
+        Exercicio exercicio = exercicios.get(posicao);
+        txtNomeEx.setText(exercicio.getNome());
+        txtCargaEx.setText(String.valueOf(exercicio.getCarga()));
+        txtRepeticoesEx.setText(String.valueOf(exercicio.getRepeticoes()));
+        txtSeriesEx.setText(String.valueOf(exercicio.getSeries()));
+        txtSeriesEx.setEnabled(false);
+        txtRepeticoesEx.setEnabled(false);
     }
 
     public void atualizaDados(List<Exercicio> exercicios) {

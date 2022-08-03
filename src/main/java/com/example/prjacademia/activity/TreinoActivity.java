@@ -39,12 +39,14 @@ public class TreinoActivity extends AppCompatActivity {
     private void inicializaExerciciosNaListView() {
         Exercicio ex = new Exercicio();
         ex.setCarga(30.0F);
-        ex.setRepeticoes(3);
+        ex.setRepeticoes(12);
+        ex.setSeries(3);
         ex.setNome("rosca direta");
         exercicioDAO.adiciona(ex);
         ex = new Exercicio();
         ex.setCarga(60.0F);
-        ex.setRepeticoes(3);
+        ex.setSeries(3);
+        ex.setRepeticoes(12);
         ex.setNome("rosca alternada");
         exercicioDAO.adiciona(ex);
     }
