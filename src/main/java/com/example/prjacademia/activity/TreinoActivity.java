@@ -14,7 +14,6 @@ import com.example.prjacademia.model.Exercicio;
 public class TreinoActivity extends AppCompatActivity {
 
     private ExercicioDAO exercicioDAO;
-    private ListView lvExercicios;
     private ExercicioAdapter exercicioAdapter;
 
     @Override
@@ -25,7 +24,7 @@ public class TreinoActivity extends AppCompatActivity {
         exercicioDAO = new ExercicioDAO();
         exercicioAdapter = new ExercicioAdapter(this);
         inicializaExerciciosNaListView();
-        lvExercicios = findViewById(R.id.treino_activity_list_view);
+        ListView lvExercicios = findViewById(R.id.treino_activity_list_view);
         lvExercicios.setAdapter(exercicioAdapter);
 
     }

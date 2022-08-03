@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ExercicioAdapter extends BaseAdapter {
-    private List<Exercicio> exercicios = new ArrayList<Exercicio>();
-    private Context context;
+    private final List<Exercicio> exercicios = new ArrayList<>();
+    private final Context context;
 
     public ExercicioAdapter(Context context) {
         this.context = context;
@@ -60,15 +60,12 @@ public class ExercicioAdapter extends BaseAdapter {
 
     private void configuraEventoDoBotao(View viewCriada) {
         Button botao = viewCriada.findViewById(R.id.treino_activity_item_botao_exercicio);
-        botao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String textoBotao = (String) botao.getText();
-                if (textoBotao.contains("Completar")) {
-                    botao.setText("Reiniciar exercicio");
-                } else {
-                    botao.setText("Completar exercicio");
-                }
+        botao.setOnClickListener(view -> {
+            String textoBotao = (String) botao.getText();
+            if (textoBotao.contains("Completar")) {
+                botao.setText("Reiniciar exercicio");
+            } else {
+                botao.setText("Completar exercicio");
             }
         });
     }
