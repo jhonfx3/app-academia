@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/treino_activity_menu_op_iniciar_treino"
+        android:title="Iniciar"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/treino_activity_menu_op_mudar_treino"
+        android:title="Mudar de treino"></item>
+    <item
+        android:id="@+id/treino_activity_menu_op_ver_treino_completo"
+        android:title="Ver treino completo"></item>
+
+</menu>

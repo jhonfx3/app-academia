@@ -1,8 +1,14 @@
 package com.example.prjacademia.activity;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +32,22 @@ public class TreinoActivity extends AppCompatActivity {
         inicializaExerciciosNaListView();
         ListView lvExercicios = findViewById(R.id.treino_activity_list_view);
         lvExercicios.setAdapter(exercicioAdapter);
+    }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.treino_activity_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (R.id.treino_activity_menu_op_iniciar_treino == itemId) {
+            // lógica de habilitar os botes de completar exercicio
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
