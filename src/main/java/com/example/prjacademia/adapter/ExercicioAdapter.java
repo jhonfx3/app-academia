@@ -1,6 +1,7 @@
 package com.example.prjacademia.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.List;
 public class ExercicioAdapter extends BaseAdapter {
     private final List<Exercicio> exercicios = new ArrayList<>();
     private final Context context;
+    private boolean mostrarBotoes;
 
     public ExercicioAdapter(Context context) {
         this.context = context;
@@ -41,6 +43,7 @@ public class ExercicioAdapter extends BaseAdapter {
 
     @Override
     public View getView(int posicao, View view, ViewGroup viewGroup) {
+        Log.i("Info", "GetView sendo chamado...");
         View viewCriada = LayoutInflater.
                 from(context).inflate(R.layout.item_exercicio, viewGroup, false);
         setaOsDadosNasTextViews(posicao, viewCriada);
@@ -59,7 +62,8 @@ public class ExercicioAdapter extends BaseAdapter {
     }
 
     private void configuraEventoDoBotao(View viewCriada) {
-        Button botao = viewCriada.findViewById(R.id.treino_activity_item_botao_exercicio);
+        Button botao = viewCriada.
+                findViewById(R.id.treino_activity_item_botao_exercicio);
         botao.setOnClickListener(view -> {
             String textoBotao = (String) botao.getText();
             if (textoBotao.contains("Completar")) {
@@ -68,6 +72,11 @@ public class ExercicioAdapter extends BaseAdapter {
                 botao.setText("Completar exercicio");
             }
         });
+        if (mostrarBotoes) {
+            botao.setVisibility(View.VISIBLE);
+        } else {
+            botao.setVisibility(View.INVISIBLE);
+        }
     }
 
     private void setaAsInformacoesNasViews(int posicao, TextView txtNomeEx, EditText txtCargaEx, EditText txtRepeticoesEx, EditText txtSeriesEx) {
@@ -83,6 +92,11 @@ public class ExercicioAdapter extends BaseAdapter {
     public void atualizaDados(List<Exercicio> exercicios) {
         this.exercicios.clear();
         this.exercicios.addAll(exercicios);
+        notifyDataSetChanged();
+    }
+
+    public void mostraBotoes() {
+        mostrarBotoes = true;
         notifyDataSetChanged();
     }
 }

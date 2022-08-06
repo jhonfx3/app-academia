@@ -46,6 +46,7 @@ public class TreinoActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (R.id.treino_activity_menu_op_iniciar_treino == itemId) {
             // lógica de habilitar os botes de completar exercicio
+            exercicioAdapter.mostraBotoes();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -68,6 +69,12 @@ public class TreinoActivity extends AppCompatActivity {
         ex.setSeries(3);
         ex.setRepeticoes(12);
         ex.setNome("rosca alternada");
+        exercicioDAO.adiciona(ex);
+        ex = new Exercicio();
+        ex.setCarga(60.0F);
+        ex.setSeries(3);
+        ex.setRepeticoes(12);
+        ex.setNome("leg press");
         exercicioDAO.adiciona(ex);
     }
 }
