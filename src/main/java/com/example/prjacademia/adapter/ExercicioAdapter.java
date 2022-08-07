@@ -20,6 +20,7 @@ public class ExercicioAdapter extends BaseAdapter {
     private final List<Exercicio> exercicios = new ArrayList<>();
     private final Context context;
     private boolean mostrarBotoes;
+    private View viewCriada;
 
     public ExercicioAdapter(Context context) {
         this.context = context;
@@ -43,10 +44,11 @@ public class ExercicioAdapter extends BaseAdapter {
 
     @Override
     public View getView(int posicao, View view, ViewGroup viewGroup) {
-        Log.i("Info", "GetView sendo chamado...");
-        View viewCriada = LayoutInflater.
-                from(context).inflate(R.layout.item_exercicio, viewGroup, false);
-        setaOsDadosNasTextViews(posicao, viewCriada);
+        if (view != null) {
+            viewCriada = LayoutInflater.
+                    from(context).inflate(R.layout.item_exercicio, viewGroup, false);
+            setaOsDadosNasTextViews(posicao, viewCriada);
+        }
         return viewCriada;
     }
 

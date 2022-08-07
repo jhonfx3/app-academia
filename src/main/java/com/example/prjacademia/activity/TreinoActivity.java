@@ -16,22 +16,32 @@ import com.example.prjacademia.R;
 import com.example.prjacademia.adapter.ExercicioAdapter;
 import com.example.prjacademia.dao.ExercicioDAO;
 import com.example.prjacademia.model.Exercicio;
+import com.example.prjacademia.model.Treino;
+
+import java.util.ArrayList;
 
 public class TreinoActivity extends AppCompatActivity {
 
     private ExercicioDAO exercicioDAO;
     private ExercicioAdapter exercicioAdapter;
+    private Treino treino;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Treino de hoje");
         setContentView(R.layout.treino_activity);
-        exercicioDAO = new ExercicioDAO();
-        exercicioAdapter = new ExercicioAdapter(this);
+        fazInstanciacaoDosObjetos();
+        setTitle(treino.getNome());
         inicializaExerciciosNaListView();
         ListView lvExercicios = findViewById(R.id.treino_activity_list_view);
         lvExercicios.setAdapter(exercicioAdapter);
+    }
+
+    private void fazInstanciacaoDosObjetos() {
+        exercicioDAO = new ExercicioDAO();
+        exercicioAdapter = new ExercicioAdapter(this);
+        treino = new Treino("Treino A");
     }
 
 
@@ -76,5 +86,6 @@ public class TreinoActivity extends AppCompatActivity {
         ex.setRepeticoes(12);
         ex.setNome("leg press");
         exercicioDAO.adiciona(ex);
+        treino.setExercicios(exercicioDAO.findAll());
     }
 }
